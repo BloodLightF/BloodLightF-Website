@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>血夜临霜【BloodLightF】【弦月初十】 - 个人主页</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 全局背景容器 -->
+    <div id="global-background" class="background-container"></div>
+    
+    <!-- 内容包装器 -->
+    <div class="content-wrapper">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html">想康康爷的主页吗？</a>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> 首页</a>
+                    <a href="education.html" class="nav-link"><i class="fas fa-graduation-cap"></i> 个人学历</a>
+                    <a href="gallery.html" class="nav-link"><i class="fas fa-images"></i> 绘图合集</a>
+                    <a href="evaluation.html" class="nav-link"><i class="fas fa-star"></i> 个人评价</a>
+                    <a href="resources.html" class="nav-link"><i class="fas fa-file-alt"></i> 文件资源</a>
+                    <a href="links.html" class="nav-link"><i class="fas fa-link"></i> 网页链接</a>
+                    <a href="admin.html" class="nav-link admin-btn"><i class="fas fa-cog"></i> 管理</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 头部区域 -->
+        <header class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="avatar-container">
+                        <img id="avatar-img" src="images/avatar.jpg" alt="头像" class="avatar">
+                        <div class="avatar-overlay">
+                            <span>点击更换头像</span>
+                        </div>
+                    </div>
+                    <h1 id="user-name">血夜临霜【BloodLightF】</h1>
+                    <p id="user-title" class="title">这是一个整活网站</p>
+                    <p id="user-bio" class="bio">不是程序员，事画家</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 内容区域 -->
+        <main class="main-content">
+            <div class="container">
+                <section class="intro-section section-with-bg">
+                    <div class="section-bg" id="intro-bg"></div>
+                    <div class="section-content transparent-content">
+                        <h2>个人简介</h2>
+                        <div class="intro-content">
+                            <p id="intro-text">20岁，事带学生，电音发烧友，不务正业。正在学板绘，画技拙劣，社恐，只在网站上传作品。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="skills-section section-with-bg">
+                    <div class="section-bg" id="skills-bg"></div>
+                    <div class="section-content transparent-content">
+                        <h2>点满技能</h2>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <h3>主玩模型</h3>
+                                <p>BanDai, GSC, 国模, 寿屋及其他</p>
+                            </div>
+                            <div class="skill-item">
+                                <h3>绘画类型</h3>
+                                <p>手绘, 板绘</p>
+                            </div>
+                            <div class="skill-item">
+                                <h3>听歌类型</h3>
+                                <p>HardDanceMusic, BigRoom, Drum&Bass，J&K-Pop，古风</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="quick-links section-with-bg">
+                    <div class="section-bg" id="links-bg"></div>
+                    <div class="section-content transparent-content">
+                        <h2>可跳转页面</h2>
+                        <div class="links-grid">
+                            <a href="education.html" class="quick-link">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>目前学历</span>
+                            </a>
+                            <a href="gallery.html" class="quick-link">
+                                <i class="fas fa-images"></i>
+                                <span>绘图合集</span>
+                            </a>
+                            <a href="evaluation.html" class="quick-link">
+                                <i class="fas fa-star"></i>
+                                <span>个人语录</span>
+                            </a>
+                            <a href="resources.html" class="quick-link">
+                                <i class="fas fa-file-alt"></i>
+                                <span>文件资源</span>
+                            </a>
+                            <!-- 新增网页链接入口 -->
+                            <a href="links.html" class="quick-link">
+                                <i class="fas fa-link"></i>
+                                <span>网页链接</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 版权归BloodLightF所有，作品可随意转载，请标明作者。</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 头像上传模态框 -->
+    <div id="avatar-modal" class="modal">
+        <!-- 原有头像上传代码保持不变 -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>更换头像</h2>
+            <div class="upload-area" id="avatar-upload-area">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>点击或拖拽图片到此处</p>
+                <input type="file" id="avatar-input" accept="image/*">
+            </div>
+            <div class="modal-actions">
+                <button id="confirm-avatar">确认更换</button>
+                <button id="cancel-avatar">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
