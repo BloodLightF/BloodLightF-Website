@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人学历 - BloodLightF的个人主页</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #3498db;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid #3498db;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -17px;
+        }
+        
+        .right::after {
+            left: -17px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .timeline-content h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        
+        .edit-mode {
+            display: none;
+        }
+        
+        .edit-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">血夜临霜的主页</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> 首页</a>
+                <a href="education.html" class="nav-link active"><i class="fas fa-graduation-cap"></i> 个人学历</a>
+                <a href="gallery.html" class="nav-link"><i class="fas fa-images"></i> 绘图合集</a>
+                <a href="evaluation.html" class="nav-link"><i class="fas fa-star"></i> 个人评价</a>
+                <a href="resources.html" class="nav-link"><i class="fas fa-file-alt"></i> 文件资源</a>
+                <a href="links.html" class="nav-link"><i class="fas fa-link"></i> 网页链接</a>
+                <a href="admin.html" class="nav-link admin-btn"><i class="fas fa-cog"></i> 管理</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <div class="container">
+            <h1>个人学历</h1>
+            <p class="intro-text">不会有人想调查我滴学历吧</p>
+            
+            <div class="timeline">
+                <!-- 学历项目1 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date" id="edu-date-1">2020年9月 - 2023年6月</div>
+                        <h3 id="edu-title-1">高中</h3>
+                        <p id="edu-school-1">榆次二中</p>
+                        <p id="edu-desc-1">苦练绘画、假扮嘉豪控制希沃白板</p>
+                        
+                        <!-- 编辑模式 -->
+                        <div class="edit-mode" id="edit-edu-1">
+                            <input type="text" id="edit-edu-date-1" class="form-input" placeholder="时间段">
+                            <input type="text" id="edit-edu-title-1" class="form-input" placeholder="学历标题">
+                            <input type="text" id="edit-edu-school-1" class="form-input" placeholder="学校名称">
+                            <textarea id="edit-edu-desc-1" class="form-input" placeholder="描述"></textarea>
+                            <button class="save-btn" onclick="saveEducation(1)">保存</button>
+                        </div>
+                        
+                        <button class="edit-btn" onclick="toggleEdit(1)" id="btn-edit-1">编辑</button>
+                    </div>
+                </div>
+                
+                <!-- 学历项目2 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date" id="edu-date-2">2023年9月 - 至今</div>
+                        <h3 id="edu-title-2">本科-计科</h3>
+                        <p id="edu-school-2">清华不紧挨着的大连海事</p>
+                        <p id="edu-desc-2">研究方向：如何上岸</p>
+                        
+                        <!-- 编辑模式 -->
+                        <div class="edit-mode" id="edit-edu-2">
+                            <input type="text" id="edit-edu-date-2" class="form-input" placeholder="时间段">
+                            <input type="text" id="edit-edu-title-2" class="form-input" placeholder="学历标题">
+                            <input type="text" id="edit-edu-school-2" class="form-input" placeholder="学校名称">
+                            <textarea id="edit-edu-desc-2" class="form-input" placeholder="描述"></textarea>
+                            <button class="save-btn" onclick="saveEducation(2)">保存</button>
+                        </div>
+                        
+                        <button class="edit-btn" onclick="toggleEdit(2)" id="btn-edit-2">编辑</button>
+                    </div>
+                </div>
+                
+                <!-- 可以继续添加更多学历项目 -->
+            </div>
+            
+            <div class="add-section" style="text-align: center; margin-top: 40px;">
+                <button class="edit-btn" onclick="addEducation()">添加学历经历</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 赤石转换式：弦月初十=血夜临霜=BloodLightF.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 检查URL参数，判断是否进入编辑模式
+        const urlParams = new URLSearchParams(window.location.search);
+        const editMode = urlParams.get('edit');
+        
+        if (editMode === 'true' && localStorage.getItem('adminLoggedIn') === 'true') {
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.style.display = 'inline-block';
+            });
+        } else {
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.style.display = 'none';
+            });
+        }
+        
+        // 加载教育数据
+        document.addEventListener('DOMContentLoaded', function() {
+            loadEducationData();
+        });
+        
+        function loadEducationData() {
+            const educationData = JSON.parse(localStorage.getItem('educationData') || '{}');
+            
+            // 加载现有数据
+            for (let i = 1; i <= 2; i++) {
+                if (educationData[i]) {
+                    document.getElementById(`edu-date-${i}`).textContent = educationData[i].date;
+                    document.getElementById(`edu-title-${i}`).textContent = educationData[i].title;
+                    document.getElementById(`edu-school-${i}`).textContent = educationData[i].school;
+                    document.getElementById(`edu-desc-${i}`).textContent = educationData[i].description;
+                }
+            }
+        }
+        
+        function toggleEdit(id) {
+            const editDiv = document.getElementById(`edit-edu-${id}`);
+            const isEditing = editDiv.style.display === 'block';
+            
+            if (isEditing) {
+                editDiv.style.display = 'none';
+                document.getElementById(`btn-edit-${id}`).textContent = '编辑';
+            } else {
+                // 填充当前值到编辑框
+                document.getElementById(`edit-edu-date-${id}`).value = document.getElementById(`edu-date-${id}`).textContent;
+                document.getElementById(`edit-edu-title-${id}`).value = document.getElementById(`edu-title-${id}`).textContent;
+                document.getElementById(`edit-edu-school-${id}`).value = document.getElementById(`edu-school-${id}`).textContent;
+                document.getElementById(`edit-edu-desc-${id}`).value = document.getElementById(`edu-desc-${id}`).textContent;
+                
+                editDiv.style.display = 'block';
+                document.getElementById(`btn-edit-${id}`).textContent = '取消';
+            }
+        }
+        
+        function saveEducation(id) {
+            const educationData = JSON.parse(localStorage.getItem('educationData') || '{}');
+            
+            educationData[id] = {
+                date: document.getElementById(`edit-edu-date-${id}`).value,
+                title: document.getElementById(`edit-edu-title-${id}`).value,
+                school: document.getElementById(`edit-edu-school-${id}`).value,
+                description: document.getElementById(`edit-edu-desc-${id}`).value
+            };
+            
+            localStorage.setItem('educationData', JSON.stringify(educationData));
+            
+            // 更新显示
+            document.getElementById(`edu-date-${id}`).textContent = educationData[id].date;
+            document.getElementById(`edu-title-${id}`).textContent = educationData[id].title;
+            document.getElementById(`edu-school-${id}`).textContent = educationData[id].school;
+            document.getElementById(`edu-desc-${id}`).textContent = educationData[id].description;
+            
+            // 关闭编辑模式
+            toggleEdit(id);
+            
+            alert('教育信息已保存！');
+        }
+        
+        function addEducation() {
+            alert('添加新学历功能需要更多开发。目前你可以编辑现有条目。');
+        }
+    </script>
+</body>
+</html>

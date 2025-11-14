@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我是一个一个一个</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .links-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .link-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .link-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .link-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .link-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .link-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin: 0;
+        }
+        
+        .link-url {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+        
+        .link-description {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .link-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .visit-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .visit-btn:hover {
+            background: #219653;
+        }
+        
+        .edit-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            display: none;
+        }
+        
+        .edit-mode .edit-section {
+            display: block;
+        }
+        
+        .link-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .form-full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+        
+        .edit-mode .delete-btn {
+            display: inline-block;
+        }
+        
+        .category-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+        
+        .link-category {
+            display: inline-block;
+            background: #e8f4fd;
+            color: #3498db;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">牢弟的主页</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> 首页</a>
+                <a href="education.html" class="nav-link"><i class="fas fa-graduation-cap"></i> 个人学历</a>
+                <a href="gallery.html" class="nav-link"><i class="fas fa-images"></i> 绘图合集</a>
+                <a href="evaluation.html" class="nav-link"><i class="fas fa-star"></i> 个人评价</a>
+                <a href="resources.html" class="nav-link"><i class="fas fa-file-alt"></i> 文件资源</a>
+                <a href="links.html" class="nav-link active"><i class="fas fa-link"></i> 网页链接</a>
+                <a href="admin.html" class="nav-link admin-btn"><i class="fas fa-cog"></i> 管理</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="links-container">
+        <h1>网页链接收藏</h1>
+        <p>这里收藏了我常用的网站和资源链接</p>
+        
+        <!-- 分类筛选 -->
+        <div class="category-filter" id="category-filter">
+            <!-- 分类按钮将通过JavaScript动态生成 -->
+        </div>
+        
+        <!-- 编辑区域（仅在编辑模式显示） -->
+        <div id="edit-section" class="edit-section">
+            <h2>添加新链接</h2>
+            <form id="link-form" class="link-form">
+                <div class="form-group">
+                    <label for="link-title">链接标题</label>
+                    <input type="text" id="link-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="link-url">链接地址</label>
+                    <input type="url" id="link-url" placeholder="https://" required>
+                </div>
+                <div class="form-group">
+                    <label for="link-category">分类</label>
+                    <input type="text" id="link-category" placeholder="学习、工具、娱乐等">
+                </div>
+                <div class="form-group form-full-width">
+                    <label for="link-description">链接描述</label>
+                    <textarea id="link-description" placeholder="描述这个链接的用途和特点"></textarea>
+                </div>
+                <div class="form-group form-full-width">
+                    <label for="link-icon">图标（可选）</label>
+                    <select id="link-icon">
+                        <option value="fas fa-globe">🌐 网站</option>
+                        <option value="fab fa-github">🐙 GitHub</option>
+                        <option value="fab fa-google">🔍 Google</option>
+                        <option value="fab fa-youtube">📺 YouTube</option>
+                        <option value="fas fa-book">📚 学习</option>
+                        <option value="fas fa-tools">🛠️ 工具</option>
+                        <option value="fas fa-gamepad">🎮 游戏</option>
+                        <option value="fas fa-music">🎵 音乐</option>
+                        <option value="fas fa-video">🎬 视频</option>
+                        <option value="fas fa-shopping-cart">🛒 购物</option>
+                    </select>
+                </div>
+                <div class="form-full-width">
+                    <button type="submit" class="save-btn">添加链接</button>
+                    <button type="button" id="cancel-edit" class="logout-btn">取消</button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- 链接展示区域 -->
+        <div id="links-grid" class="links-grid">
+            <!-- 链接将通过JavaScript动态加载 -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 不知道该写啥了-_-</p>
+        </div>
+    </footer>
+
+    <script src="js/links.js"></script>
+</body>
+</html>

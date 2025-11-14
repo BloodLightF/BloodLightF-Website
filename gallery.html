@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绘图合集 - BloodLightF个人主页</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            background: white;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .gallery-info {
+            padding: 15px;
+        }
+        
+        .gallery-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .gallery-date {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .upload-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            display: none;
+        }
+        
+        .edit-mode .upload-section {
+            display: block;
+        }
+        
+        .upload-area {
+            border: 2px dashed #3498db;
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .upload-area:hover {
+            background: #f8f9fa;
+        }
+        
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(231, 76, 60, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: none;
+        }
+        
+        .edit-mode .delete-btn {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">谁的主页？我不到啊</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> 首页</a>
+                <a href="education.html" class="nav-link"><i class="fas fa-graduation-cap"></i> 个人学历</a>
+                <a href="gallery.html" class="nav-link active"><i class="fas fa-images"></i> 绘图合集</a>
+                <a href="evaluation.html" class="nav-link"><i class="fas fa-star"></i> 个人评价</a>
+                <a href="resources.html" class="nav-link"><i class="fas fa-file-alt"></i> 文件资源</a>
+                <a href="links.html" class="nav-link"><i class="fas fa-link"></i> 网页链接</a>
+                <a href="admin.html" class="nav-link admin-btn"><i class="fas fa-cog"></i> 管理</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="gallery-container">
+        <h1>绘图合集</h1>
+        <p>这里展示我的绘画作品设计</p>
+        
+        <!-- 上传区域（仅在编辑模式显示） -->
+        <div id="upload-section" class="upload-section">
+            <h2>上传新图片</h2>
+            <div class="upload-area" id="gallery-upload-area">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>点击或拖拽图片到此处上传</p>
+                <input type="file" id="gallery-input" accept="image/*" multiple>
+            </div>
+            <div class="form-group">
+                <label for="image-title">图片标题</label>
+                <input type="text" id="image-title" placeholder="请输入图片标题">
+            </div>
+            <div class="form-group">
+                <label for="image-desc">图片描述</label>
+                <textarea id="image-desc" placeholder="请输入图片描述"></textarea>
+            </div>
+            <button id="upload-gallery-btn" class="save-btn">上传图片</button>
+        </div>
+        
+        <!-- 图片展示区域 -->
+        <div id="gallery-grid" class="gallery-grid">
+            <!-- 图片将通过JavaScript动态加载 -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Tip：注意，这里没有低调的黑客.</p>
+        </div>
+    </footer>
+
+    <script src="js/gallery.js"></script>
+</body>
+</html>

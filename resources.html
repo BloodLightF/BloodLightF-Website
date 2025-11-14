@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件资源 - 我的个人主页</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .resources-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .file-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+        
+        .file-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .file-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+            color: #3498db;
+        }
+        
+        .file-info {
+            flex: 1;
+        }
+        
+        .file-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .file-meta {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .download-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .upload-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            display: none;
+        }
+        
+        .edit-mode .upload-section {
+            display: block;
+        }
+        
+        .upload-area {
+            border: 2px dashed #3498db;
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .upload-area:hover {
+            background: #f8f9fa;
+        }
+        
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            display: none;
+        }
+        
+        .edit-mode .delete-btn {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">BloodLightF的主页</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> 首页</a>
+                <a href="education.html" class="nav-link"><i class="fas fa-graduation-cap"></i> 个人学历</a>
+                <a href="gallery.html" class="nav-link"><i class="fas fa-images"></i> 绘图合集</a>
+                <a href="evaluation.html" class="nav-link"><i class="fas fa-star"></i> 个人评价</a>
+                <a href="resources.html" class="nav-link active"><i class="fas fa-file-alt"></i> 文件资源</a>
+                <a href="links.html" class="nav-link"><i class="fas fa-link"></i> 网页链接</a>
+                <a href="admin.html" class="nav-link admin-btn"><i class="fas fa-cog"></i> 管理</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="resources-container">
+        <h1>文件资源</h1>
+        <p>我的学习资料【非常的正经】</p>
+        
+        <!-- 上传区域（仅在编辑模式显示） -->
+        <div id="upload-section" class="upload-section">
+            <h2>上传新文件</h2>
+            <div class="upload-area" id="file-upload-area">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>点击或拖拽文件到此处上传</p>
+                <input type="file" id="file-input" multiple>
+            </div>
+            <div class="form-group">
+                <label for="file-desc">文件描述</label>
+                <textarea id="file-desc" placeholder="请输入文件描述"></textarea>
+            </div>
+            <button id="upload-file-btn" class="save-btn">上传文件</button>
+        </div>
+        
+        <!-- 文件列表 -->
+        <div id="files-grid" class="files-grid">
+            <!-- 文件将通过JavaScript动态加载 -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 随便下载，出事免责.</p>
+        </div>
+    </footer>
+
+    <script src="js/resources.js"></script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站管理 - word个人主页</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .admin-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .password-prompt {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .admin-panel {
+            display: none;
+        }
+        
+        .admin-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .save-btn {
+            background: #27ae60;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .save-btn:hover {
+            background: #219653;
+        }
+        
+        .logout-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">张三的主页</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> 首页</a>
+                <a href="admin.html" class="nav-link active admin-btn"><i class="fas fa-cog"></i> 管理</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <!-- 密码输入区域 -->
+        <div id="password-prompt" class="password-prompt">
+            <h2>管理员登录</h2>
+            <p>请输入管理员密码以编辑网站内容</p>
+            <input type="password" id="admin-password" class="password-input" placeholder="输入密码">
+            <button id="login-btn" class="save-btn">登录</button>
+            <p id="login-error" style="color: #e74c3c; margin-top: 15px; display: none;">密码错误，请重试</p>
+        </div>
+        
+        <!-- 管理面板 -->
+        <div id="admin-panel" class="admin-panel">
+            <h1>网站管理面板</h1>
+            <p>在这里你可以编辑网站的所有内容</p>
+            
+            <!-- 基本信息编辑 -->
+            <div class="admin-section">
+                <h2>基本信息</h2>
+                <div class="form-group">
+                    <label for="edit-name">姓名</label>
+                    <input type="text" id="edit-name" value="张三">
+                </div>
+                <div class="form-group">
+                    <label for="edit-title">头衔/职位</label>
+                    <input type="text" id="edit-title" value="计算机科学专业学生">
+                </div>
+                <div class="form-group">
+                    <label for="edit-bio">个人简介</label>
+                    <textarea id="edit-bio">热爱编程、设计和创新的技术爱好者</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="edit-intro">详细介绍</label>
+                    <textarea id="edit-intro">我是一名计算机科学专业的学生，对前端开发和用户体验设计有浓厚兴趣。目前正在学习各种Web技术，并参与多个项目开发。</textarea>
+                </div>
+                <button id="save-basic" class="save-btn">保存基本信息</button>
+            </div>
+            
+            <!-- 其他页面内容编辑 -->
+            <div class="admin-section">
+                <h2>页面内容管理</h2>
+                <p>你可以通过以下链接编辑各个页面的内容：</p>
+                <div style="margin-top: 20px;">
+                    <a href="education.html?edit=true" class="save-btn" style="display: inline-block; margin-right: 10px; text-decoration: none;">
+                        <i class="fas fa-graduation-cap"></i> 编辑个人学历
+                    </a>
+                    <a href="evaluation.html?edit=true" class="save-btn" style="display: inline-block; margin-right: 10px; text-decoration: none;">
+                        <i class="fas fa-star"></i> 编辑个人评价
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 文件管理 -->
+            <div class="admin-section">
+                <h2>文件管理</h2>
+                <p>管理网站上的图片和文件：</p>
+                <div style="margin-top: 20px;">
+                    <!-- 修改管理页面中的链接 -->
+                <a href="gallery.html?edit=true" class="save-btn" style="display: inline-block; margin-right: 10px; text-decoration: none;">
+                    <i class="fas fa-images"></i> 管理绘图合集
+                </a>
+                <a href="resources.html?edit=true" class="save-btn" style="display: inline-block; text-decoration: none;">
+                    <i class="fas fa-file-alt"></i> 管理文件资源
+                </a>
+                </div>
+            </div>
+            
+            <!-- 在admin.html的管理面板中添加 -->
+            <div class="admin-section">
+                <h2>背景图片管理</h2>
+                
+                <!-- 背景类型选择 -->
+                <div class="form-group">
+                    <label>选择要设置的背景区域：</label>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin: 10px 0;">
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="radio" name="bg-type" value="global" checked> 全局背景
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="radio" name="bg-type" value="intro"> 个人简介区域
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="radio" name="bg-type" value="skills"> 技能区域
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="radio" name="bg-type" value="links"> 导航区域
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- 背景预览 -->
+                <div class="form-group">
+                    <label>当前背景预览：</label>
+                    <div id="background-preview" class="background-preview">
+                        <p>暂无背景</p>
+                    </div>
+                </div>
+                
+                <!-- 背景上传区域 -->
+                <div id="background-upload-section">
+                    <h3>上传全局背景</h3>
+                    <div class="upload-area" id="background-upload-area">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>点击或拖拽背景图片到此处</p>
+                        <input type="file" id="background-file" accept="image/*">
+                    </div>
+                    <button id="upload-background-btn" class="save-btn">确认上传背景</button>
+                    <button id="reset-background-btn" class="logout-btn">重置当前背景</button>
+                </div>
+                
+                <!-- 所有背景预览 -->
+                <div class="form-group">
+                    <label>所有背景状态：</label>
+                    <div class="background-options">
+                        <div class="background-option" onclick="document.querySelector('input[value=global]').click(); updateUploadSection();">
+                            <div class="bg-preview-small" id="global-preview">
+                                <span>无背景</span>
+                            </div>
+                            <span>全局背景</span>
+                        </div>
+                        <div class="background-option" onclick="document.querySelector('input[value=intro]').click(); updateUploadSection();">
+                            <div class="bg-preview-small" id="intro-preview">
+                                <span>无背景</span>
+                            </div>
+                            <span>个人简介</span>
+                        </div>
+                        <div class="background-option" onclick="document.querySelector('input[value=skills]').click(); updateUploadSection();">
+                            <div class="bg-preview-small" id="skills-preview">
+                                <span>无背景</span>
+                            </div>
+                            <span>技能区域</span>
+                        </div>
+                        <div class="background-option" onclick="document.querySelector('input[value=links]').click(); updateUploadSection();">
+                            <div class="bg-preview-small" id="links-preview">
+                                <span>无背景</span>
+                            </div>
+                            <span>导航区域</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="admin-section">
+                    <h2>网页链接管理</h2>
+                    <p>管理收藏的网站链接：</p>
+                    <div style="margin-top: 20px;">
+                        <a href="links.html?edit=true" class="save-btn" style="display: inline-block; margin-right: 10px; text-decoration: none;">
+                            <i class="fas fa-link"></i> 管理网页链接
+                        </a>
+                    </div>
+                </div>
+
+                <button id="reset-all-backgrounds-btn" class="logout-btn">重置所有背景</button>
+            </div>
+
+            <button id="logout-btn" class="logout-btn">退出管理</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
